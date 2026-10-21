@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report lost item · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body class="app-booting" data-page="lost" data-title="Report lost item" data-kind="lost">
+  <main class="page">
+    <div class="page-header" data-animate>
+      <div>
+        <h1 class="page-title">Report a lost item</h1>
+        <p class="page-desc">Tell us what you lost. We'll check it against everything handed in, and keep checking as new items arrive.</p>
+      </div>
+    </div>
+
+    <div class="form-layout" id="formLayout">
+      <form class="card" id="reportForm" novalidate data-animate style="--i:1">
+        <section class="form-section" data-section="what">
+          <div class="form-section-head">
+            <span class="form-step">1</span>
+            <div><h2 class="form-section-title">What is it?</h2><p class="form-section-desc">Pick the category that fits best.</p></div>
+          </div>
+          <div class="field">
+            <label class="label" for="itemName">Item name</label>
+            <input class="input" id="itemName" maxlength="80" placeholder="e.g. Blue Dell laptop" autocomplete="off">
+          </div>
+          <div class="field">
+            <span class="label">Category</span>
+            <div class="chip-grid" id="categoryChips" role="radiogroup" aria-label="Category"></div>
+          </div>
+        </section>
+
+        <section class="form-section" data-section="where">
+          <div class="form-section-head">
+            <span class="form-step">2</span>
+            <div><h2 class="form-section-title">Where and when?</h2><p class="form-section-desc">A rough place and day is enough.</p></div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="label" for="location">Where did you last have it?</label>
+              <div class="input-wrap">
+                <i data-icon="map-pin"></i>
+                <input class="input" id="location" list="places" maxlength="80" placeholder="e.g. Central Library" autocomplete="off">
+              </div>
+              <datalist id="places"></datalist>
+            </div>
+            <div class="field">
+              <label class="label" for="date">Date lost</label>
+              <input class="input" type="date" id="date">
+              <div class="quick-picks" id="quickDates">
+                <button type="button" data-days="0">Today</button>
+                <button type="button" data-days="1">Yesterday</button>
+                <button type="button" data-days="2">2 days ago</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" data-section="details">
+          <div class="form-section-head">
+            <span class="form-step">3</span>
+            <div><h2 class="form-section-title">Describe it</h2><p class="form-section-desc">The more specific, the better the match. Only you and admins can see this.</p></div>
+          </div>
+          <div class="field">
+            <label class="label" for="description">Description <span class="char-count" id="descCount">0/500</span></label>
+            <textarea class="textarea" id="description" maxlength="500" placeholder="e.g. Has a scratch on the lid and a sticker of a cat. Charger was in the same sleeve."></textarea>
+          </div>
+          <div class="field">
+            <label class="label" for="keywordInput">Keywords <span class="optional">Press Enter or comma to add</span></label>
+            <div class="tag-input" id="tagInput">
+              <input id="keywordInput" placeholder="black, leather, sticker" autocomplete="off">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" data-section="photo">
+          <div class="form-section-head">
+            <span class="form-step">4</span>
+            <div><h2 class="form-section-title">Add a photo <span class="optional muted" style="font-weight:400">Optional</span></h2><p class="form-section-desc">JPG, PNG, WEBP or GIF. Large photos are resized automatically.</p></div>
+          </div>
+          <div id="photoArea">
+            <label class="dropzone" id="dropzone">
+              <input type="file" id="image" accept="image/jpeg,image/png,image/webp,image/gif">
+              <span class="dropzone-icon"><i data-icon="image-plus"></i></span>
+              <span><span class="strong">Click to upload</span> <span class="muted">or drag and drop</span></span>
+              <span class="hint">A clear photo makes matching much faster</span>
+            </label>
+          </div>
+        </section>
+
+        <div style="padding:0 24px 16px"><div class="form-error" id="formError" role="alert"></div></div>
+        <div class="card-footer">
+          <a class="btn btn-ghost" href="dashboard.html">Cancel</a>
+          <button type="submit" class="btn btn-primary">Submit report <i data-icon="arrow-anim"></i></button>
+        </div>
+      </form>
+
+      <aside class="aside-sticky" data-animate style="--i:2">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title"><i data-icon="eye"></i> Preview</h2><span class="badge badge-outline">Live</span></div>
+          <div class="report-list" id="preview"></div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="section-title">Tips for a faster match</h2>
+            <ul class="tips mt-2">
+            <li><i data-icon="circle-check"></i><span>Use the name you'd search for, like “AirPods Pro case”.</span></li>
+            <li><i data-icon="circle-check"></i><span>Mention colour, brand and anything unusual.</span></li>
+            <li><i data-icon="circle-check"></i><span>Add a photo of a similar item if you have one.</span></li>
+            <li><i data-icon="circle-check"></i><span>Check “Browse found items”: it may already be there.</span></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/app.js?v=2.1"></script>
+  <script src="js/report.js?v=2.1"></script>
+</body>
+</html>

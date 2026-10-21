@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body>
+  <div class="auth">
+    <div class="auth-main">
+      <div class="auth-top">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><i data-icon="package-search"></i></span>
+          <span class="brand-name">Lost &amp; Found</span>
+        </a>
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"><i data-icon="sun-moon"></i></button>
+      </div>
+
+      <div class="auth-form-wrap" id="authWrap" data-animate>
+        <h1 class="auth-title">Create your account</h1>
+        <p class="auth-sub">Report, track and claim lost items across campus.</p>
+
+        <form class="auth-form" id="registerForm" novalidate>
+          <div class="form-error" id="formError" role="alert"></div>
+          <div class="field">
+            <label class="label" for="name">Full name</label>
+            <div class="input-wrap">
+              <i data-icon="user"></i>
+              <input type="text" id="name" class="input" placeholder="Aarav Sharma" autocomplete="name" required autofocus>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="email">College email</label>
+            <div class="input-wrap">
+              <i data-icon="mail"></i>
+              <input type="email" id="email" class="input" placeholder="you@college.edu" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="label" for="prn">PRN</label>
+              <div class="input-wrap">
+                <i data-icon="id-card"></i>
+                <input type="text" id="prn" class="input" placeholder="2023BTCS001" required>
+              </div>
+            </div>
+            <div class="field">
+              <span class="label">I am a</span>
+              <div class="segmented" id="roleSwitch" style="width:100%">
+                <button type="button" data-value="student" aria-pressed="true">Student</button>
+                <button type="button" data-value="teacher" aria-pressed="false">Staff</button>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="password">Password</label>
+            <div class="input-wrap">
+              <i data-icon="lock"></i>
+              <input type="password" id="password" class="input has-action" placeholder="At least 6 characters" autocomplete="new-password" required>
+              <button type="button" class="input-action" data-toggle-password="password" aria-label="Show password"><i data-icon="eye"></i></button>
+            </div>
+            <div class="strength" id="strength" data-score="0"><span></span><span></span><span></span><span></span></div>
+            <span class="hint" id="strengthHint">Use 8+ characters with a mix of letters, numbers and symbols.</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Create account <i data-icon="arrow-anim"></i></button>
+          <p class="hint center">By signing up you agree to use the portal for genuine lost and found reports.</p>
+        </form>
+
+        <p class="auth-foot">Already have an account? <a href="login.html" class="link">Log in</a></p>
+      </div>
+    </div>
+
+    <aside class="auth-side" aria-hidden="true">
+      <div class="auth-side-cards">
+        <div class="float-card">
+          <span class="notif-icon tone-blue"><i data-icon="sparkles"></i></span>
+          <div><b>Possible match · 88%</b><span>Grey backpack · Main auditorium</span></div>
+        </div>
+        <div class="float-card">
+          <span class="notif-icon tone-violet"><i data-icon="hand"></i></span>
+          <div><b>Claim verified</b><span>AirPods case · Seminar Hall</span></div>
+        </div>
+        <div class="float-card">
+          <span class="notif-icon tone-green"><i data-icon="circle-check"></i></span>
+          <div><b>Returned to its owner</b><span>Black wallet · 2h ago</span></div>
+        </div>
+      </div>
+      <h2>Every lost thing deserves a way home.</h2>
+      <p>Lost &amp; Found matches lost and found reports across campus, so the right item gets back to the right person.</p>
+      <div class="auth-points">
+        <span><i data-icon="zap"></i> Automatic matching the moment something's reported</span>
+        <span><i data-icon="shield-check"></i> Every claim verified before handover</span>
+        <span><i data-icon="eye-off"></i> Finders stay anonymous</span>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/auth.js?v=2.1"></script>
+</body>
+</html>

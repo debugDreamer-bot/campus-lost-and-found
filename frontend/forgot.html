@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot password · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body>
+  <div class="auth">
+    <div class="auth-main">
+      <div class="auth-top">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><i data-icon="package-search"></i></span>
+          <span class="brand-name">Lost &amp; Found</span>
+        </a>
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"><i data-icon="sun-moon"></i></button>
+      </div>
+
+      <div class="auth-form-wrap" id="authWrap" data-animate>
+        <div id="forgotStep">
+          <h1 class="auth-title">Forgot your password?</h1>
+          <p class="auth-sub">Enter your email and we'll send you a link to set a new one.</p>
+
+          <form class="auth-form" id="forgotForm" novalidate>
+            <div class="form-error" id="formError" role="alert"></div>
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <div class="input-wrap">
+                <i data-icon="mail"></i>
+                <input type="email" id="email" class="input" placeholder="you@college.edu" autocomplete="email" required autofocus>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Send reset link <i data-icon="arrow-anim"></i></button>
+          </form>
+        </div>
+
+        <div id="forgotDone" hidden>
+          <div class="success-mark accent"><i data-icon="mail-check" class="icon-xl"></i></div>
+          <h1 class="auth-title center">Check your inbox</h1>
+          <p class="auth-sub center" id="forgotDoneText">If an account exists for that email, a reset link is on its way. It expires in 30 minutes.</p>
+          <a href="login.html" class="btn btn-secondary btn-lg btn-block mt-6"><i data-icon="arrow-left"></i> Back to log in</a>
+        </div>
+
+        <p class="auth-foot">Remembered it? <a href="login.html" class="link">Log in</a></p>
+      </div>
+    </div>
+
+    <aside class="auth-side" aria-hidden="true">
+      <div class="auth-side-cards">
+        <div class="float-card">
+          <span class="notif-icon tone-blue"><i data-icon="sparkles"></i></span>
+          <div><b>Possible match · 88%</b><span>Grey backpack · Main auditorium</span></div>
+        </div>
+        <div class="float-card">
+          <span class="notif-icon tone-violet"><i data-icon="hand"></i></span>
+          <div><b>Claim verified</b><span>AirPods case · Seminar Hall</span></div>
+        </div>
+        <div class="float-card">
+          <span class="notif-icon tone-green"><i data-icon="circle-check"></i></span>
+          <div><b>Returned to its owner</b><span>Black wallet · 2h ago</span></div>
+        </div>
+      </div>
+      <h2>Every lost thing deserves a way home.</h2>
+      <p>Lost &amp; Found matches lost and found reports across campus, so the right item gets back to the right person.</p>
+      <div class="auth-points">
+        <span><i data-icon="zap"></i> Automatic matching the moment something's reported</span>
+        <span><i data-icon="shield-check"></i> Every claim verified before handover</span>
+        <span><i data-icon="eye-off"></i> Finders stay anonymous</span>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/auth.js?v=2.1"></script>
+</body>
+</html>

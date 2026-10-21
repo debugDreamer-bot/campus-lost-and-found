@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset password · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body>
+  <div class="auth">
+    <div class="auth-main">
+      <div class="auth-top">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><i data-icon="package-search"></i></span>
+          <span class="brand-name">Lost &amp; Found</span>
+        </a>
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"><i data-icon="sun-moon"></i></button>
+      </div>
+
+      <div class="auth-form-wrap" id="authWrap" data-animate>
+        <div id="resetStep">
+          <h1 class="auth-title">Set a new password</h1>
+          <p class="auth-sub">Choose something you haven't used here before.</p>
+
+          <form class="auth-form" id="resetForm" novalidate>
+            <div class="form-error" id="formError" role="alert"></div>
+            <div class="field">
+              <label class="label" for="password">New password</label>
+              <div class="input-wrap">
+                <i data-icon="lock"></i>
+                <input type="password" id="password" class="input has-action" placeholder="At least 6 characters" autocomplete="new-password" required autofocus>
+                <button type="button" class="input-action" data-toggle-password="password" aria-label="Show password"><i data-icon="eye"></i></button>
+              </div>
+              <div class="strength" id="strength" data-score="0"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="field">
+              <label class="label" for="confirmPassword">Confirm password</label>
+              <div class="input-wrap">
+                <i data-icon="lock"></i>
+                <input type="password" id="confirmPassword" class="input" placeholder="Type it again" autocomplete="new-password" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Update password <i data-icon="arrow-anim"></i></button>
+          </form>
+        </div>
+
+        <div id="resetDone" hidden>
+          <div class="success-mark"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h1 class="auth-title center">Password updated</h1>
+          <p class="auth-sub center">Taking you to log in…</p>
+        </div>
+
+        <p class="auth-foot">Link expired? <a href="forgot.html" class="link">Request a new one</a></p>
+      </div>
+    </div>
+
+    <aside class="auth-side" aria-hidden="true">
+      <div class="auth-side-cards">
+        <div class="float-card">
+          <span class="notif-icon tone-blue"><i data-icon="sparkles"></i></span>
+          <div><b>Possible match · 88%</b><span>Grey backpack · Main auditorium</span></div>
+        </div>
+        <div class="float-card">
+          <span class="notif-icon tone-violet"><i data-icon="hand"></i></span>
+          <div><b>Claim verified</b><span>AirPods case · Seminar Hall</span></div>
+        </div>
+        <div class="float-card">
+          <span class="notif-icon tone-green"><i data-icon="circle-check"></i></span>
+          <div><b>Returned to its owner</b><span>Black wallet · 2h ago</span></div>
+        </div>
+      </div>
+      <h2>Every lost thing deserves a way home.</h2>
+      <p>Lost &amp; Found matches lost and found reports across campus, so the right item gets back to the right person.</p>
+      <div class="auth-points">
+        <span><i data-icon="zap"></i> Automatic matching the moment something's reported</span>
+        <span><i data-icon="shield-check"></i> Every claim verified before handover</span>
+        <span><i data-icon="eye-off"></i> Finders stay anonymous</span>
+      </div>
+    </aside>
+  </div>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/auth.js?v=2.1"></script>
+</body>
+</html>

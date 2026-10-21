@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost &amp; Found · Get lost things back, faster</title>
+  <meta name="description" content="The campus lost and found. Report what you lost or found, get matched automatically, and claim it with verified proof.">
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body>
+
+  <header class="site-nav" id="siteNav">
+    <div class="container site-nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark"><i data-icon="package-search"></i></span>
+        <span class="brand-name">Lost &amp; Found</span>
+      </a>
+      <nav class="site-links" aria-label="Sections">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="site-actions">
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"><i data-icon="sun-moon"></i></button>
+        <a href="login.html" class="btn btn-ghost" id="navLogin">Log in</a>
+        <a href="register.html" class="btn btn-primary" id="navCta">Get started <i data-icon="arrow-anim"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-glow"></div>
+      <div class="container">
+        <a href="#how" class="pill pill-beam" data-animate style="--i:0">
+          <span class="pill-tag">New</span>
+          Reports now match automatically
+          <i data-icon="arrow-anim"></i>
+        </a>
+        <h1 class="hero-title" data-animate style="--i:1">
+          Lost it on campus?<br><span class="gradient-text">Get it back, faster.</span>
+        </h1>
+        <p class="hero-sub" data-animate style="--i:2">
+          Report what you lost or found in under a minute. We match reports automatically,
+          notify the owner, and verify every claim before anything changes hands.
+        </p>
+        <div class="hero-cta" data-animate style="--i:3">
+          <a href="register.html" class="btn btn-primary btn-xl btn-shine" data-auth-href="lost.html">
+            Report a lost item <i data-icon="arrow-anim"></i>
+          </a>
+          <a href="login.html?next=found.html" class="btn btn-secondary btn-xl" data-auth-href="found.html">
+            <i data-icon="hand-heart"></i> I found something
+          </a>
+        </div>
+        <div class="hero-trust" data-animate style="--i:4">
+          <span><i data-icon="circle-check"></i> Free for students &amp; staff</span>
+          <span><i data-icon="circle-check"></i> Every claim verified by an admin</span>
+          <span><i data-icon="circle-check"></i> Finders stay anonymous</span>
+        </div>
+      </div>
+
+      <!-- Product mockup -->
+      <div class="mockup-wrap" data-inview>
+        <div class="float-card float-1">
+          <span class="notif-icon tone-blue"><i data-icon="sparkles"></i></span>
+          <div><b>Possible match found</b><span>Grey backpack · just now</span></div>
+        </div>
+        <div class="float-card float-2">
+          <span class="notif-icon tone-green"><i data-icon="circle-check"></i></span>
+          <div><b>Returned to its owner</b><span>Black wallet · Central Library</span></div>
+        </div>
+
+        <div class="mockup" data-inview aria-hidden="true">
+          <div class="mockup-bar">
+            <i></i><i></i><i></i>
+            <span class="url"><i data-icon="lock" class="icon-sm"></i> lostandfound.campus/my-reports</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-side">
+              <span class="m-link"><i data-icon="layout-dashboard" class="icon-sm"></i> Overview</span>
+              <span class="m-link active"><i data-icon="list-checks" class="icon-sm"></i> My reports</span>
+              <span class="m-link"><i data-icon="scan-search" class="icon-sm"></i> Browse found</span>
+              <span class="m-link"><i data-icon="hand-heart" class="icon-sm"></i> Report found</span>
+              <span class="m-link"><i data-icon="settings" class="icon-sm"></i> Settings</span>
+            </div>
+            <div class="mockup-main">
+              <div class="row-between">
+                <div>
+                  <div class="strong" style="font-size:15px">Is this your grey backpack?</div>
+                  <div class="text-xs muted">Someone handed in an item that matches your report.</div>
+                </div>
+                <span class="badge badge-dot badge-blue">Match found</span>
+              </div>
+              <div class="mock-pair">
+                <div class="mock-item">
+                  <div class="thumb cat-tint-2"><i data-icon="backpack"></i></div>
+                  <div><small>Your report</small><b>Grey Wildcraft backpack</b><small>Main auditorium · Oct 18</small></div>
+                </div>
+                <div class="mock-score">
+                  <div class="match-ring" style="--p:88"><div><span>88%</span><small>match</small></div></div>
+                </div>
+                <div class="mock-item">
+                  <div class="thumb cat-tint-2"><i data-icon="backpack"></i></div>
+                  <div><small>Found item</small><b>Grey backpack</b><small>Main auditorium · Oct 19</small></div>
+                </div>
+              </div>
+              <div class="mock-bars">
+                <div class="mock-stat"><small>Same category</small><b>Bag</b><div class="mock-progress"><i style="--w:100%"></i></div></div>
+                <div class="mock-stat"><small>Shared keywords</small><b>grey, backpack</b><div class="mock-progress"><i style="--w:72%"></i></div></div>
+                <div class="mock-stat"><small>Found nearby</small><b>1 day later</b><div class="mock-progress"><i style="--w:90%"></i></div></div>
+              </div>
+              <div class="row" style="justify-content:flex-end">
+                <span class="btn btn-secondary btn-sm">Not mine</span>
+                <span class="btn btn-primary btn-sm"><i data-icon="hand" class="icon-sm"></i> This is mine</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories marquee -->
+    <section class="section-sm">
+      <div class="container center">
+        <p class="muted text-sm mb-4">Things people get back every week</p>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track" id="marquee"></div>
+      </div>
+    </section>
+
+    <!-- Live stats -->
+    <section class="container">
+      <div class="stat-band" data-reveal>
+        <div><b data-stat="returned">—</b><span>Items returned to owners</span></div>
+        <div><b data-stat="returnRate" data-suffix="%">—</b><span>Of lost reports resolved</span></div>
+        <div><b data-stat="avgDays">—</b><span>Average time to get it back</span></div>
+        <div><b data-stat="foundThisMonth">—</b><span>Items handed in this month</span></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="center" data-reveal>
+          <span class="eyebrow"><i data-icon="sparkles" class="icon-sm"></i> Features</span>
+          <h2 class="section-heading">Everything you need to reunite<br>people with their things</h2>
+          <p class="section-lead">No more notice boards and lost property boxes nobody checks. One place for the whole campus.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card bento-card span-4" data-reveal data-inview>
+            <div class="bento-icon"><i data-icon="zap"></i></div>
+            <h3>Smart matching</h3>
+            <p>Every new report is scored against the other side by category, shared words, location and timing. Strong matches are linked the moment they're reported.</p>
+            <div class="bento-visual">
+              <div class="score-rows">
+                <div class="score-row"><span>Category</span><div class="meter"><i style="--w:100%"></i></div><b>+40</b></div>
+                <div class="score-row"><span>Shared words</span><div class="meter"><i style="--w:75%"></i></div><b>+30</b></div>
+                <div class="score-row"><span>Location</span><div class="meter"><i style="--w:50%"></i></div><b>+15</b></div>
+                <div class="score-row"><span>Timing</span><div class="meter"><i style="--w:100%"></i></div><b>+15</b></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bento-card span-2" data-reveal style="--i:1">
+            <div class="bento-icon"><i data-icon="bell-ring"></i></div>
+            <h3>Instant alerts</h3>
+            <p>Get an email and an in-app notification as soon as something matches.</p>
+            <div class="bento-visual">
+              <div class="notif-stack">
+                <div class="float-card"><span class="notif-icon tone-blue"><i data-icon="sparkles"></i></span><div><b>Possible match</b><span>iPhone 13 · Canteen</span></div></div>
+                <div class="float-card"><span class="notif-icon tone-violet"><i data-icon="hand"></i></span><div><b>Claim received</b><span>Grey backpack</span></div></div>
+                <div class="float-card"><span class="notif-icon tone-green"><i data-icon="circle-check"></i></span><div><b>Returned</b><span>AirPods case</span></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bento-card span-2" data-reveal>
+            <div class="bento-icon"><i data-icon="shield-check"></i></div>
+            <h3>Proof-based claims</h3>
+            <p>Owners describe something only they would know. An admin checks it before the handover.</p>
+            <div class="bento-visual">
+              <div class="proof" style="font-size:13px">
+                <div class="proof-label">Proof of ownership</div>
+                <p>Lock screen is a photo of my dog, and the case has a crack near the camera.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card bento-card span-2" data-reveal style="--i:1">
+            <div class="bento-icon"><i data-icon="eye-off"></i></div>
+            <h3>Private by default</h3>
+            <p>Finders stay anonymous, and identifying details are hidden from everyone browsing.</p>
+            <div class="bento-visual stack">
+              <div class="lock-visual"><span class="badge badge-outline"><i data-icon="lock" class="icon-sm"></i> Hidden</span><div class="redacted grow"></div></div>
+              <div class="redacted" style="width:80%"></div>
+              <div class="redacted" style="width:55%"></div>
+            </div>
+          </article>
+
+          <article class="card bento-card span-2" data-reveal style="--i:2">
+            <div class="bento-icon"><i data-icon="scan-search"></i></div>
+            <h3>Browse what's been found</h3>
+            <p>Look through everything handed in, and claim it straight from the listing.</p>
+            <div class="bento-visual">
+              <div class="row" style="gap:8px">
+                <div class="thumb thumb-lg cat-tint-0"><i data-icon="laptop"></i></div>
+                <div class="thumb thumb-lg cat-tint-3"><i data-icon="key-round"></i></div>
+                <div class="thumb thumb-lg cat-tint-4"><i data-icon="shirt"></i></div>
+                <div class="thumb thumb-lg cat-tint-1"><i data-icon="headphones"></i></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how" style="padding-top:0">
+      <div class="container">
+        <div class="center" data-reveal>
+          <span class="eyebrow"><i data-icon="route" class="icon-sm"></i> How it works</span>
+          <h2 class="section-heading">From “where did it go?”<br>to “got it back” in three steps</h2>
+        </div>
+        <div class="steps-grid">
+          <article class="card how-step" data-reveal>
+            <h3>Report it</h3>
+            <p>Tell us what it is, where and when. Add a photo if you have one. It takes under a minute.</p>
+          </article>
+          <article class="card how-step" data-reveal style="--i:1">
+            <h3>We match it</h3>
+            <p>Your report is compared with everything on the other side, and you're notified when there's a likely match.</p>
+          </article>
+          <article class="card how-step" data-reveal style="--i:2">
+            <h3>Claim &amp; collect</h3>
+            <p>Prove it's yours with a detail only you'd know. Once an admin verifies it, pick it up from the office.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" style="padding-top:0">
+      <div class="container">
+        <div class="center" data-reveal>
+          <span class="eyebrow"><i data-icon="message-circle-question" class="icon-sm"></i> FAQ</span>
+          <h2 class="section-heading">Questions, answered</h2>
+        </div>
+        <div class="faq" id="faqList" data-reveal>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Who can use Lost &amp; Found? <i data-icon="plus"></i></button>
+            <div class="faq-a"><div><p>Any student or staff member. Sign up with your college email and PRN, and you can report, browse and claim items straight away.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What happens after I report a lost item? <i data-icon="plus"></i></button>
+            <div class="faq-a"><div><p>We compare it with every found item that hasn't been claimed, and keep checking as new items are handed in. When something matches, you get an email and a notification so you can review it.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How do you stop people claiming things that aren't theirs? <i data-icon="plus"></i></button>
+            <div class="faq-a"><div><p>Descriptions and keywords are hidden from anyone browsing. To claim an item you have to describe something only the owner would know, and an admin verifies it before the item is handed over.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">I found something. What should I do? <i data-icon="plus"></i></button>
+            <div class="faq-a"><div><p>Report it here with a photo if you can, then hand it in at the admin office. The owner never sees your name, and you'll be told when it's back with them.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Can I withdraw a report? <i data-icon="plus"></i></button>
+            <div class="faq-a"><div><p>Yes. If you find your item yourself, withdraw the report from My reports while it's still searching.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container">
+      <div class="cta-band" data-reveal>
+        <h2>Lost something today?</h2>
+        <p>Start a report now. The sooner it's in, the sooner it's matched.</p>
+        <div class="hero-cta">
+          <a href="register.html" class="btn btn-primary btn-lg btn-shine" data-auth-href="lost.html">Report a lost item <i data-icon="arrow-anim"></i></a>
+          <a href="login.html" class="btn btn-secondary btn-lg" data-auth-href="dashboard.html">Log in</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand">
+            <span class="brand-mark"><i data-icon="package-search"></i></span>
+            <span class="brand-name">Lost &amp; Found</span>
+          </a>
+          <p class="muted text-sm mt-3" style="max-width:280px">The campus lost and found, so lost things find their way home.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div>
+          <h4>Get started</h4>
+          <a href="register.html">Create account</a>
+          <a href="login.html">Log in</a>
+          <a href="forgot.html">Reset password</a>
+        </div>
+        <div>
+          <h4>Report</h4>
+          <a href="login.html?next=lost.html">I lost something</a>
+          <a href="login.html?next=found.html">I found something</a>
+          <a href="login.html?next=browse.html">Browse found items</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Lost &amp; Found</span>
+        <span>Made for students and staff</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/landing.js?v=2.1"></script>
+</body>
+</html>

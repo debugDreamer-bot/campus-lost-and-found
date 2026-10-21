@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse found items · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body class="app-booting" data-page="browse" data-title="Browse found items">
+  <main class="page">
+    <div class="page-header" data-animate>
+      <div>
+        <h1 class="page-title">Browse found items</h1>
+        <p class="page-desc">Everything handed in that hasn't been claimed yet. Descriptions stay hidden so only the real owner can describe them.</p>
+      </div>
+      <div class="page-actions">
+        <a class="btn btn-secondary" href="found.html"><i data-icon="hand-heart"></i> I found something</a>
+      </div>
+    </div>
+
+    <div class="stack mb-6" style="gap:12px;--i:1" data-animate>
+      <div class="row wrap" style="gap:12px">
+        <div class="input-wrap grow" style="max-width:420px;min-width:220px">
+          <i data-icon="search"></i>
+          <input type="search" class="input" id="search" placeholder="Search by item or place, e.g. “charger” or “library”">
+        </div>
+        <span class="muted text-sm" id="resultCount"></span>
+      </div>
+      <div class="chip-scroll" id="categoryFilters" role="group" aria-label="Filter by category"></div>
+    </div>
+
+    <div class="item-grid" id="grid"></div>
+    <div class="center mt-8"><button class="btn btn-secondary" id="loadMore" hidden>Load more</button></div>
+  </main>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/app.js?v=2.1"></script>
+  <script src="js/browse.js?v=2.1"></script>
+</body>
+</html>

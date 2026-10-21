@@ -1,0 +1,29 @@
+# Netlify: the frontend is served as static files, and the Express backend
+# runs as one serverless function at /api/* (plus uploaded images at /uploads/*).
+
+[build]
+  publish = "frontend"
+  functions = "netlify/functions"
+
+[functions]
+  # Keep these as regular files in the function bundle
+  external_node_modules = ["mongoose", "mongodb", "express"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/uploads/*"
+  to = "/.netlify/functions/api/uploads/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"

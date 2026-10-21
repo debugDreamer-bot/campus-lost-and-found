@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body class="app-booting" data-page="profile" data-title="Settings">
+  <main class="page page-narrow">
+    <div class="page-header" data-animate>
+      <div>
+        <h1 class="page-title">Settings</h1>
+        <p class="page-desc">Manage your profile, password and how the app looks.</p>
+      </div>
+    </div>
+
+    <div class="card" data-animate style="--i:1">
+      <div class="card-body" style="padding:28px">
+
+        <section class="settings-section">
+          <div>
+            <h2>Profile</h2>
+            <p>This is how admins see you when they arrange a handover.</p>
+          </div>
+          <form id="profileForm" novalidate>
+            <div class="row mb-6" style="gap:16px">
+              <span id="profileAvatar"></span>
+              <div>
+                <div class="strong" style="font-size:16px" id="profileName">—</div>
+                <div class="row mt-1" style="gap:6px"><span class="badge badge-outline" id="profileRole">—</span><span class="muted text-xs" id="memberSince"></span></div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="name">Full name</label>
+              <input class="input" id="name" maxlength="60" autocomplete="name">
+            </div>
+            <div class="field-row mt-4">
+              <div class="field">
+                <label class="label" for="email">Email</label>
+                <input class="input" id="email" readonly>
+              </div>
+              <div class="field">
+                <label class="label" for="prn">PRN</label>
+                <input class="input" id="prn" readonly>
+              </div>
+            </div>
+            <p class="hint mt-2">Email and PRN identify you to the college, so only an admin can change them.</p>
+            <div class="row mt-4" style="justify-content:flex-end">
+              <button type="submit" class="btn btn-primary" id="saveProfile" disabled>Save changes</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="settings-section">
+          <div>
+            <h2>Password</h2>
+            <p>Use at least 6 characters. A longer passphrase is easier to remember and harder to guess.</p>
+          </div>
+          <form id="passwordForm" novalidate>
+            <div class="form-error mb-4" id="passwordError" role="alert"></div>
+            <div class="field">
+              <label class="label" for="currentPassword">Current password</label>
+              <input class="input" type="password" id="currentPassword" autocomplete="current-password">
+            </div>
+            <div class="field-row mt-4">
+              <div class="field">
+                <label class="label" for="newPassword">New password</label>
+                <input class="input" type="password" id="newPassword" autocomplete="new-password">
+                <div class="strength" id="strength" data-score="0"><span></span><span></span><span></span><span></span></div>
+              </div>
+              <div class="field">
+                <label class="label" for="confirmPassword">Confirm new password</label>
+                <input class="input" type="password" id="confirmPassword" autocomplete="new-password">
+              </div>
+            </div>
+            <div class="row mt-4" style="justify-content:flex-end">
+              <button type="submit" class="btn btn-secondary">Update password</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="settings-section">
+          <div>
+            <h2>Appearance</h2>
+            <p>Pick a theme, or follow your device. Tip: <span class="kbd" id="themeShortcut">⌘ J</span> switches instantly.</p>
+          </div>
+          <div class="theme-options" id="themeOptions">
+            <button class="theme-option" data-theme-value="light" aria-pressed="false">
+              <div class="theme-preview light"><i></i><i></i><i></i></div>
+              <div class="theme-option-label"><i data-icon="sun" class="icon-sm"></i> Light</div>
+            </button>
+            <button class="theme-option" data-theme-value="dark" aria-pressed="false">
+              <div class="theme-preview dark"><i></i><i></i><i></i></div>
+              <div class="theme-option-label"><i data-icon="moon" class="icon-sm"></i> Dark</div>
+            </button>
+            <button class="theme-option" data-theme-value="system" aria-pressed="false">
+              <div class="theme-preview system"><i></i><i></i><i></i></div>
+              <div class="theme-option-label"><i data-icon="monitor" class="icon-sm"></i> System</div>
+            </button>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <div>
+            <h2>Your impact</h2>
+            <p>Everything you've reported, and the people you've helped.</p>
+          </div>
+          <div>
+            <div class="impact" id="impact"></div>
+            <div class="mt-4" id="achievement"></div>
+          </div>
+        </section>
+
+        <section class="settings-section">
+          <div>
+            <h2>Session</h2>
+            <p>Sign out of Lost &amp; Found on this device.</p>
+          </div>
+          <div>
+            <button class="btn btn-secondary" data-logout><i data-icon="log-out"></i> Log out</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/app.js?v=2.1"></script>
+  <script src="js/profile.js?v=2.1"></script>
+</body>
+</html>

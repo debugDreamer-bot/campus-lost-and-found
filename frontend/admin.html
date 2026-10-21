@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin console · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body class="app-booting" data-page="admin" data-title="Admin console" data-admin>
+  <main class="page">
+    <div class="page-header" data-animate>
+      <div>
+        <h1 class="page-title">Admin console</h1>
+        <p class="page-desc">Verify claims, approve returns and keep an eye on everything reported across campus.</p>
+      </div>
+      <div class="page-actions">
+        <div class="menu-anchor">
+          <button class="btn btn-secondary" data-menu="exportMenu" aria-expanded="false"><i data-icon="download"></i> Export CSV <i data-icon="chevron-down" class="icon-sm"></i></button>
+          <div class="menu menu-right" id="exportMenu">
+            <button class="menu-item" data-export="lost"><i data-icon="search-x"></i> Lost reports</button>
+            <button class="menu-item" data-export="found"><i data-icon="hand-heart"></i> Found reports</button>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-icon" id="refreshBtn" aria-label="Refresh"><i data-icon="refresh-cw"></i></button>
+      </div>
+    </div>
+
+    <div class="tabs" id="adminTabs" role="tablist" data-animate style="--i:1">
+      <button class="tab" role="tab" data-value="overview" aria-selected="true"><i data-icon="chart-column"></i> Overview</button>
+      <button class="tab" role="tab" data-value="matches" aria-selected="false"><i data-icon="git-compare-arrows"></i> Matches <span class="tab-count" id="matchCount">0</span></button>
+      <button class="tab" role="tab" data-value="reports" aria-selected="false"><i data-icon="table-2"></i> All reports</button>
+    </div>
+
+    <!-- Overview -->
+    <section id="panel-overview" class="mt-6" role="tabpanel">
+      <div class="stats stats-6" id="kpis"></div>
+
+      <div class="admin-grid mt-4">
+        <div class="card chart-card span-2">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Reports, last 14 days</h2>
+              <p class="card-desc">New lost and found reports per day</p>
+            </div>
+            <div class="row">
+              <div class="legend"><span><i style="background:var(--series-1)"></i>Lost</span><span><i style="background:var(--series-2)"></i>Found</span></div>
+              <button class="btn btn-ghost btn-sm" id="toggleDaysTable" aria-pressed="false"><i data-icon="table-2" class="icon-sm"></i> Table</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart" id="daysChart"></div>
+            <div class="table-wrap" id="daysTable" hidden></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Needs attention</h2>
+              <p class="card-desc">Claims waiting for your review</p>
+            </div>
+          </div>
+          <div id="attentionList"></div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">By category</h2>
+              <p class="card-desc">All-time reports</p>
+            </div>
+            <div class="legend"><span><i style="background:var(--series-1)"></i>Lost</span><span><i style="background:var(--series-2)"></i>Found</span></div>
+          </div>
+          <div class="card-body"><div class="chart" id="categoryChart"></div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Top locations</h2>
+              <p class="card-desc">Where things go missing most</p>
+            </div>
+          </div>
+          <div class="card-body" id="locations"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i data-icon="trophy"></i> Campus heroes</h2>
+              <p class="card-desc">Most items returned</p>
+            </div>
+          </div>
+          <div class="card-body" style="padding-top:8px;padding-bottom:8px" id="leaders"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Matches -->
+    <section id="panel-matches" class="mt-6" role="tabpanel" hidden>
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Open matches</h2>
+            <p class="card-desc">Claimed matches first. Review the owner's proof before approving.</p>
+          </div>
+          <div class="input-wrap" style="width:min(280px,100%)">
+            <i data-icon="search"></i>
+            <input type="search" class="input" id="matchSearch" placeholder="Search item, owner, place" style="height:34px">
+          </div>
+        </div>
+        <div class="report-list" id="matchList"></div>
+      </div>
+    </section>
+
+    <!-- All reports -->
+    <section id="panel-reports" class="mt-6" role="tabpanel" hidden>
+      <div class="card">
+        <div class="row wrap" style="gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)">
+          <div class="segmented" id="typeSwitch">
+            <button type="button" data-value="lost" aria-pressed="true">Lost</button>
+            <button type="button" data-value="found" aria-pressed="false">Found</button>
+          </div>
+          <select class="select" id="statusFilter" style="width:auto;height:34px"></select>
+          <select class="select" id="categoryFilter" style="width:auto;height:34px">
+              <option value="">All categories</option>
+              <option value="Wallet">Wallet</option>
+              <option value="Phone">Phone</option>
+              <option value="Bag">Bag</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Keys">Keys</option>
+              <option value="ID Card">ID Card</option>
+              <option value="Books">Books</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Water bottle">Water bottle</option>
+              <option value="Clothing">Clothing</option>
+              <option value="USB Drive">USB Drive</option>
+              <option value="Others">Others</option>
+          </select>
+          <div class="input-wrap ml-auto" style="width:min(260px,100%)">
+            <i data-icon="search"></i>
+            <input type="search" class="input" id="itemSearch" placeholder="Search reports" style="height:34px">
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>Item</th><th>Category</th><th>Location</th><th>Date</th><th>Reported by</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="chart-tooltip" id="chartTooltip" role="tooltip"></div>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/app.js?v=2.1"></script>
+  <script src="js/admin.js?v=2.1"></script>
+</body>
+</html>

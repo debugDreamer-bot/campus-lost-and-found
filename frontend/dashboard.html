@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body class="app-booting" data-page="dashboard" data-title="Overview">
+  <main class="page">
+    <div class="page-header" data-animate>
+      <div>
+        <h1 class="page-title" id="greeting">Welcome back</h1>
+        <p class="page-desc" id="greetingSub">Here's what's happening with your reports.</p>
+      </div>
+      <div class="page-actions">
+        <a class="btn btn-secondary" href="found.html"><i data-icon="hand-heart"></i> I found something</a>
+        <a class="btn btn-primary" href="lost.html"><i data-icon="plus"></i> Report lost item</a>
+      </div>
+    </div>
+
+    <div id="attention" class="mb-4"></div>
+
+    <div class="stats" id="stats" data-animate style="--i:1">
+      <div class="card stat"><div class="skeleton skeleton-text" style="width:60%"></div><div class="skeleton mt-3" style="height:28px;width:40%"></div></div>
+      <div class="card stat"><div class="skeleton skeleton-text" style="width:60%"></div><div class="skeleton mt-3" style="height:28px;width:40%"></div></div>
+      <div class="card stat"><div class="skeleton skeleton-text" style="width:60%"></div><div class="skeleton mt-3" style="height:28px;width:40%"></div></div>
+      <div class="card stat"><div class="skeleton skeleton-text" style="width:60%"></div><div class="skeleton mt-3" style="height:28px;width:40%"></div></div>
+    </div>
+
+    <div class="dash-grid mt-6">
+      <section class="card" data-animate style="--i:2">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Your active reports</h2>
+            <p class="card-desc">Lost items we're still working on.</p>
+          </div>
+          <a href="history.html" class="btn btn-ghost btn-sm">View all <i data-icon="arrow-anim"></i></a>
+        </div>
+        <div class="report-list" id="activeList"></div>
+      </section>
+
+      <div class="stack" style="gap:16px">
+        <section class="card" data-animate style="--i:3">
+          <div class="card-header">
+            <h2 class="card-title">Recent activity</h2>
+          </div>
+          <div class="card-body" style="padding-top:8px;padding-bottom:8px">
+            <div class="timeline" id="activity"></div>
+          </div>
+        </section>
+
+        <section class="card" data-animate style="--i:4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title"><i data-icon="trophy"></i> Campus heroes</h2>
+              <p class="card-desc">Most items returned to their owners</p>
+            </div>
+          </div>
+          <div class="card-body" style="padding-top:8px;padding-bottom:8px" id="leaders"></div>
+        </section>
+      </div>
+    </div>
+
+    <section class="mt-8" data-animate style="--i:5">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Recently found on campus</h2>
+          <p class="muted text-sm">Recognise something? Claim it with a detail only you would know.</p>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="browse.html">Browse all <i data-icon="arrow-anim"></i></a>
+      </div>
+      <div class="item-grid" id="recentFound"></div>
+    </section>
+  </main>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/app.js?v=2.1"></script>
+  <script src="js/dashboard.js?v=2.1"></script>
+</body>
+</html>

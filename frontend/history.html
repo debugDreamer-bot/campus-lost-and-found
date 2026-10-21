@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My reports · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body class="app-booting" data-page="history" data-title="My reports">
+  <main class="page">
+    <div class="page-header" data-animate>
+      <div>
+        <h1 class="page-title">My reports</h1>
+        <p class="page-desc">Follow everything you've reported, review matches, and claim your items.</p>
+      </div>
+      <div class="page-actions">
+        <a class="btn btn-secondary" href="found.html"><i data-icon="hand-heart"></i> Report found</a>
+        <a class="btn btn-primary" href="lost.html"><i data-icon="plus"></i> Report lost</a>
+      </div>
+    </div>
+
+    <section class="card" data-animate style="--i:1">
+      <div class="tabs" id="tabs" role="tablist" style="padding:0 12px">
+        <button class="tab" role="tab" data-value="lost" aria-selected="true"><i data-icon="search-x"></i> Lost items <span class="tab-count" id="countLost">0</span></button>
+        <button class="tab" role="tab" data-value="found" aria-selected="false"><i data-icon="hand-heart"></i> Found items <span class="tab-count" id="countFound">0</span></button>
+      </div>
+      <div class="row-between wrap" style="padding:12px 16px;border-bottom:1px solid var(--border)">
+        <div class="chip-scroll" id="statusFilters" role="group" aria-label="Filter by status"></div>
+        <div class="input-wrap" style="width:min(260px,100%)">
+          <i data-icon="search"></i>
+          <input type="search" class="input" id="search" placeholder="Search your reports" style="height:34px">
+        </div>
+      </div>
+      <div class="report-list" id="reportList"></div>
+    </section>
+  </main>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/app.js?v=2.1"></script>
+  <script src="js/history.js?v=2.1"></script>
+</body>
+</html>

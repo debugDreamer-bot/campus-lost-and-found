@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report found item · Lost &amp; Found</title>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))?"dark":"light"}catch(e){}</script>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=2.1">
+</head>
+<body class="app-booting" data-page="found" data-title="Report found item" data-kind="found">
+  <main class="page">
+    <div class="page-header" data-animate>
+      <div>
+        <h1 class="page-title">Report a found item</h1>
+        <p class="page-desc">Thanks for helping! Describe what you found so we can get it back to its owner.</p>
+      </div>
+    </div>
+
+    <div class="form-layout" id="formLayout">
+      <form class="card" id="reportForm" novalidate data-animate style="--i:1">
+        <section class="form-section" data-section="what">
+          <div class="form-section-head">
+            <span class="form-step">1</span>
+            <div><h2 class="form-section-title">What is it?</h2><p class="form-section-desc">Pick the category that fits best.</p></div>
+          </div>
+          <div class="field">
+            <label class="label" for="itemName">What did you find? <span class="optional">Optional</span></label>
+            <input class="input" id="itemName" maxlength="80" placeholder="e.g. Black leather wallet" autocomplete="off">
+          </div>
+          <div class="field">
+            <span class="label">Category</span>
+            <div class="chip-grid" id="categoryChips" role="radiogroup" aria-label="Category"></div>
+          </div>
+        </section>
+
+        <section class="form-section" data-section="where">
+          <div class="form-section-head">
+            <span class="form-step">2</span>
+            <div><h2 class="form-section-title">Where and when?</h2><p class="form-section-desc">A rough place and day is enough.</p></div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="label" for="location">Where did you find it?</label>
+              <div class="input-wrap">
+                <i data-icon="map-pin"></i>
+                <input class="input" id="location" list="places" maxlength="80" placeholder="e.g. Central Library" autocomplete="off">
+              </div>
+              <datalist id="places"></datalist>
+            </div>
+            <div class="field">
+              <label class="label" for="date">Date found</label>
+              <input class="input" type="date" id="date">
+              <div class="quick-picks" id="quickDates">
+                <button type="button" data-days="0">Today</button>
+                <button type="button" data-days="1">Yesterday</button>
+                <button type="button" data-days="2">2 days ago</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" data-section="details">
+          <div class="form-section-head">
+            <span class="form-step">3</span>
+            <div><h2 class="form-section-title">Describe it</h2><p class="form-section-desc">Note what anyone can see. Keep hidden details (like what's inside) to yourself: the owner proves ownership with them.</p></div>
+          </div>
+          <div class="field">
+            <label class="label" for="description">Description <span class="char-count" id="descCount">0/500</span></label>
+            <textarea class="textarea" id="description" maxlength="500" placeholder="e.g. Found on a bench near the entrance, around 3 pm."></textarea>
+          </div>
+          <div class="field">
+            <label class="label" for="keywordInput">Keywords <span class="optional">Press Enter or comma to add</span></label>
+            <div class="tag-input" id="tagInput">
+              <input id="keywordInput" placeholder="black, leather, sticker" autocomplete="off">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" data-section="photo">
+          <div class="form-section-head">
+            <span class="form-step">4</span>
+            <div><h2 class="form-section-title">Add a photo <span class="optional muted" style="font-weight:400">Optional</span></h2><p class="form-section-desc">JPG, PNG, WEBP or GIF. Large photos are resized automatically.</p></div>
+          </div>
+          <div id="photoArea">
+            <label class="dropzone" id="dropzone">
+              <input type="file" id="image" accept="image/jpeg,image/png,image/webp,image/gif">
+              <span class="dropzone-icon"><i data-icon="image-plus"></i></span>
+              <span><span class="strong">Click to upload</span> <span class="muted">or drag and drop</span></span>
+              <span class="hint">A clear photo makes matching much faster</span>
+            </label>
+          </div>
+        </section>
+
+        <div style="padding:0 24px 16px"><div class="form-error" id="formError" role="alert"></div></div>
+        <div class="card-footer">
+          <a class="btn btn-ghost" href="dashboard.html">Cancel</a>
+          <button type="submit" class="btn btn-primary">Submit found item <i data-icon="arrow-anim"></i></button>
+        </div>
+      </form>
+
+      <aside class="aside-sticky" data-animate style="--i:2">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title"><i data-icon="eye"></i> Preview</h2><span class="badge badge-outline">Live</span></div>
+          <div class="report-list" id="preview"></div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="section-title">Before you go</h2>
+            <ul class="tips mt-2">
+            <li><i data-icon="circle-check"></i><span>Hand the item in at the admin office after reporting.</span></li>
+            <li><i data-icon="circle-check"></i><span>Photograph it, but avoid showing ID cards or screens.</span></li>
+            <li><i data-icon="circle-check"></i><span>Leave out what's inside, so the owner can prove it.</span></li>
+            <li><i data-icon="circle-check"></i><span>Your name is never shown to the owner.</span></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="js/icons.js?v=2.1"></script>
+  <script src="js/core.js?v=2.1"></script>
+  <script src="js/app.js?v=2.1"></script>
+  <script src="js/report.js?v=2.1"></script>
+</body>
+</html>
