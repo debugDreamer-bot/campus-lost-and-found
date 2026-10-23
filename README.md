@@ -33,6 +33,14 @@ A campus lost-and-found portal. Students and staff report what they lost or foun
 
 ## Getting started
 
+### Quick start (no MongoDB needed)
+
+On Windows, install [Node.js](https://nodejs.org) and double-click `START.bat` (see `HOW-TO-RUN.txt`). On any system you can also run `npm install` and then `npm run local` in `backend/`.
+
+This starts a built-in MongoDB (downloaded on the first run), adds the demo data and opens http://localhost:5000. Data is kept in `backend/.local-db`; delete that folder to start fresh.
+
+### With your own MongoDB
+
 You need Node.js 18 or newer and a MongoDB server.
 
 1. **Configure** `backend/.env`:

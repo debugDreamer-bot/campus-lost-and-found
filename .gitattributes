@@ -1,0 +1,3 @@
+# Windows needs CRLF line endings in these files
+*.bat text eol=crlf
+HOW-TO-RUN.txt text eol=crlf

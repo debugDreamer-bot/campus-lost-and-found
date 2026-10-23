@@ -157,7 +157,12 @@ async function main() {
   await mongoose.disconnect();
 }
 
-main().catch(error => {
-  console.error('❌', error.message);
-  process.exit(1);
-});
+// Run from the command line; scripts/start-local.js reuses seed() instead
+if (require.main === module) {
+  main().catch(error => {
+    console.error('❌', error.message);
+    process.exit(1);
+  });
+}
+
+module.exports = { seed, clearDemoData };

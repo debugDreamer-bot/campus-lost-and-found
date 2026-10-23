@@ -1,0 +1,30 @@
+HOW TO RUN LOST & FOUND ON WINDOWS
+==================================
+
+1. Install Node.js (one time only)
+   Go to https://nodejs.org, download the "LTS" version and install it.
+   Keep clicking Next; the default options are fine.
+
+2. Double-click START.bat
+   - The first time, it downloads what it needs (about 150 MB), so it
+     takes a few minutes. Use a good internet connection.
+   - If Windows shows "Windows protected your PC", click "More info",
+     then "Run anyway".
+   - If Windows Firewall asks about Node.js, click "Allow".
+
+3. The website opens by itself in your browser at http://localhost:5000
+   Demo logins (password for both: demo1234)
+     Student:  aarav@demo.local
+     Admin:    admin@demo.local
+
+Keep the black window open while you use the site. Close it to stop.
+Next time, just double-click START.bat again; it starts in a few seconds
+and everything you added is still there.
+
+To start over with fresh demo data, delete the folder backend\.local-db
+and run START.bat again.
+
+Problems?
+- "Port 5000 is already in use": the site is probably already running in
+  another black window. Open http://localhost:5000 in the browser.
+- "Installing failed": check the internet connection and run START.bat again.
